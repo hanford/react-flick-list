@@ -1,0 +1,56 @@
+{
+  "name": "kinetic-react",
+  "version": "0.1.0",
+  "description": "Kinetic react scroll list",
+  "main": "./dist/kinetic-react.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanford/kinetic-react.git"
+  },
+  "homepage": "https://github.com/hanford/kinetic-react",
+  "bugs": "https://github.com/hanford/kinetic-react/issues",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "webpack -p"
+  },
+  "authors": [
+    "Jack Hanford"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "~6.24.1",
+    "babel-loader": "~6.4.1",
+    "babel-preset-env": "~1.5.2",
+    "babel-preset-react": "~6.24.1",
+    "babel-preset-stage-0": "~6.24.1",
+    "react": "~15.5.3",
+    "react-dom": "~15.5.3",
+    "webpack": "~2.3.3"
+  },
+  "dependencies": {
+    "global": "~4.3.1",
+    "prop-types": "~15.5.8"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "tags": [
+    "react",
+    "kinetic",
+    "scroll",
+    "momentum",
+    "inertia",
+    "flick list"
+  ],
+  "keywords": [
+    "react",
+    "kinetic",
+    "scroll",
+    "momentum",
+    "inertia",
+    "flick list"
+  ]
+}
