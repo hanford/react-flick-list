@@ -1,6 +1,6 @@
 {
   "name": "kinetic-react",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Kinetic react scroll list",
   "main": "./dist/kinetic-react.min.js",
   "repository": {
