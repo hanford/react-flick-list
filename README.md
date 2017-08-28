@@ -48,9 +48,6 @@ render () {
 | min | Number | minimum amount to allow library to scroll | false |
 | element | ref | element to measure / record scrolls on | true |
 
-## TODO:
-Publish example
-
 ## License
 
 MIT © [Jack Hanford](http://jackhanford.com)
