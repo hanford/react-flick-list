@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    'kinetic-react.min': './src/index.js'
+    'react-flick-list.min': './src/index.js'
   },
   externals: {
     'react': {
@@ -24,7 +24,7 @@ module.exports = {
     filename: '[name].js',
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist/',
-    library: 'KineticReact',
+    library: 'ReactFlickList',
     libraryTarget: 'umd'
   },
   plugins: [

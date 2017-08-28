@@ -1,22 +1,21 @@
-## kinetic-react
+## react-flick-list
 
 > react bindings for kinetic scrolling
 
-This library implements native flick list scrolling entirely in JavaScript. It's useful if you have an absolutely positioned element
-and need to transform it in a way that feels native. I couldn't have done it without this [article](https://ariya.io/2013/11/javascript-kinetic-scrolling-part-2)
+This library implements native like scrolling inertia / momentum entirely in JavaScript. It's useful if you have an absolutely positioned element and need to animate/transform it in a way that feels natural. I couldn't have done it without this [article](https://ariya.io/2013/11/javascript-kinetic-scrolling-part-2)
 
 <br />
 
 ## Install
 
 ```
-$ npm install kinetic-react --save
+$ npm install react-flick-list --save
 ```
 
 ## Usage
 
 ```js
-import Kinetic from 'kinetic-react'
+import Kinetic from 'react-flick-list'
 
 ..
 
@@ -37,7 +36,7 @@ render () {
 }
 ```
 
-![preview](https://github.com/hanford/kinetic-react/blob/master/example.gif)
+![preview](https://github.com/hanford/react-flick-list/blob/master/example.gif)
 
 ## API
 | Param          | Type    | functionality | required |

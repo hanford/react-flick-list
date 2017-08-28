@@ -1,14 +1,14 @@
 {
-  "name": "kinetic-react",
+  "name": "react-flick-list",
   "version": "0.4.2",
-  "description": "Kinetic react scroll list",
-  "main": "./dist/kinetic-react.min.js",
+  "description": "Kinetic react scrollable element",
+  "main": "./dist/react-flick-list.min.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hanford/kinetic-react.git"
+    "url": "https://github.com/hanford/react-flick-list.git"
   },
-  "homepage": "https://github.com/hanford/kinetic-react",
-  "bugs": "https://github.com/hanford/kinetic-react/issues",
+  "homepage": "https://github.com/hanford/react-flick-list",
+  "bugs": "https://github.com/hanford/react-flick-list/issues",
   "directories": {
     "example": "examples"
   },
