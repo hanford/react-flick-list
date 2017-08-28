@@ -13,7 +13,8 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "prepublish": "npm run build"
   },
   "authors": [
     "Jack Hanford"
