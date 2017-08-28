@@ -29,8 +29,6 @@ class Kinetic extends PureComponent {
 
     this.calcSize(this.props)
 
-    console.log('ELEMENT', element)
-
     element.addEventListener('touchstart', this.tap)
     element.addEventListener('touchmove', this.drag)
     element.addEventListener('touchend', this.release)
