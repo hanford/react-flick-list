@@ -39,6 +39,10 @@ class Kinetic extends PureComponent {
 
   componentWillUpdate (nextProps) {
     this.calcSize(nextProps)
+
+    if (nextProps.stop) {
+      this.reset()
+    }
   }
 
   componentWillUnmount () {
@@ -47,6 +51,15 @@ class Kinetic extends PureComponent {
     element.removeEventListener('touchstart', this.tap)
     element.removeEventListener('touchmove', this.drag)
     element.removeEventListener('touchend', this.release)
+  }
+
+  reset = () => {
+    this.reference = 0
+    this.velocity = 0
+    this.offset = 0
+    this.amplitude = 0
+    this.timestamp = null
+    this.ticker = null
   }
 
   calcSize = ({ element }) => {
@@ -65,7 +78,6 @@ class Kinetic extends PureComponent {
     let t = (pos > this.state.max) ? this.state.max : (pos < this.state.min && !this.state.pressed) ? this.state.min : pos
 
     this.offset = t
-    this.position = t
 
     this.props.broadcast({ position: t, pressed: this.state.pressed })
   }
