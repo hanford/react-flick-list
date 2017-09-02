@@ -1,6 +1,6 @@
 {
   "name": "react-flick-list",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Kinetic react scrollable element",
   "main": "./dist/react-flick-list.min.js",
   "repository": {
