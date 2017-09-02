@@ -23,6 +23,7 @@ class Kinetic extends PureComponent {
     element: document.body,
     direction: 'y',
     allowTaps: true,
+    allowScroll: true,
     max: 0,
     min: 0
   }
@@ -83,6 +84,8 @@ class Kinetic extends PureComponent {
   }
 
   tap = event => {
+    if (!this.props.allowScroll) return
+
     this.setState({ pressed: true })
 
     const { pageY, pageX } = event.touches[0]
@@ -106,6 +109,8 @@ class Kinetic extends PureComponent {
   }
 
   drag = event => {
+    if (!this.props.allowScroll) return
+
     if (this.state.pressed) {
       const { pageY, pageX } = event.touches[0]
 

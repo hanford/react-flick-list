@@ -46,6 +46,7 @@ render () {
 | max | Number | maxiumum amount to allow library to scroll | false |
 | min | Number | minimum amount to allow library to scroll | false |
 | element | ref | element to measure / record scrolls on | true |
+| allowScroll | Boolean | useful for programmatically disallowing scrolling | false |
 
 ## License
 
