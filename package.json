@@ -16,6 +16,9 @@
     "build": "webpack -p",
     "prepare": "npm run build"
   },
+  "files": [
+    "dist/"
+  ],
   "authors": [
     "Jack Hanford"
   ],
