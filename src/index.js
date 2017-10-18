@@ -17,12 +17,22 @@ export default class ReactFlickList extends PureComponent {
     pressed: false
   }
 
+  static propTypes = {
+    direction: PropTypes.string,
+    allowTaps: PropTypes.bool,
+    allowScroll: PropTypes.bool,
+    max: PropTypes.number,
+    min: PropTypes.number,
+    getRef: PropTypes.func
+  }
+
   static defaultProps = {
     direction: 'y',
     allowTaps: true,
     allowScroll: true,
     max: 0,
-    min: 0
+    min: 0,
+    getRef: () => {}
   }
 
   componentDidMount () {
