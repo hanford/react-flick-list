@@ -5,7 +5,7 @@ export default class List extends PureComponent {
     const { componentStyle } = this.props
 
     return (
-      <div style={{ ...componentStyle}} ref={r => this.props.getRef(r)}>
+      <div style={{ ...componentStyle}}>
         <div className='list-item'>Alabama</div>
         <div className='list-item'>Alaska</div>
         <div className='list-item'>Arizona</div>
