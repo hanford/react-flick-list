@@ -175,9 +175,20 @@ export default class ReactFlickList extends PureComponent {
     }
   }
 
+  getRef = root => {
+    this.root = root
+
+    if (this.props.getRef) {
+      this.props.getRef(root)
+    }
+  }
+
   render () {
     return (
-      <div ref={root => { this.root = root }}>
+      <div
+        ref={this.getRef}
+        {...this.props}
+      >
         {this.props.children(this.state.position)}
       </div>
     )
