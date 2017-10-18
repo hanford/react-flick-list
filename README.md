@@ -19,19 +19,13 @@ import Kinetic from 'react-flick-list'
 
 ..
 
-transformElement = ({ position }) => {
-  this.setState({ position })
-}
-
 render () {
-  const { position } = this.state
-
   return (
-    <div style={{ transform: `translateY(${position}px)` }}>
-      {this.list && <Kinetic element={this.list} broadcast={this.transformElement}/>}
-
-      <List ref={c => this.list = c} {...props} />
-    </div>
+    <FlickList>
+      {position => (
+        <List componentStyle={{transform: `translateY(-${position}px)`}}/>
+      )}
+    </FlickList>
   )
 }
 ```
@@ -42,10 +36,8 @@ render () {
 | Param          | Type    | functionality | required |
 |----------------|---------|-----------------|-----------------|
 | direction      | String ('y', 'x') | tell the library to calculate sizes based on height or width of element | false |
-| broadcast       | function    | notify HOC of position changes | true |
 | max | Number | maxiumum amount to allow library to scroll | false |
 | min | Number | minimum amount to allow library to scroll | false |
-| element | ref | element to measure / record scrolls on | true |
 | allowScroll | Boolean | useful for programmatically disallowing scrolling | false |
 
 ## License

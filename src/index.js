@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import document from 'global/document'
 import window from 'global/window'
 
-class Kinetic extends PureComponent {
+export default class ReactFlickList extends PureComponent {
 
   reference = 0
   velocity = 0
@@ -18,24 +17,30 @@ class Kinetic extends PureComponent {
     pressed: false
   }
 
+  static propTypes = {
+    direction: PropTypes.string,
+    allowTaps: PropTypes.bool,
+    allowScroll: PropTypes.bool,
+    max: PropTypes.number,
+    min: PropTypes.number,
+    getRef: PropTypes.func
+  }
+
   static defaultProps = {
-    broadcast: () => {},
-    element: document.body,
     direction: 'y',
     allowTaps: true,
     allowScroll: true,
     max: 0,
-    min: 0
+    min: 0,
+    getRef: () => {}
   }
 
   componentDidMount () {
-    const { element } = this.props
-
     this.calcSize(this.props)
 
-    element.addEventListener('touchstart', this.tap)
-    element.addEventListener('touchmove', this.drag)
-    element.addEventListener('touchend', this.release)
+    this.root.addEventListener('touchstart', this.tap)
+    this.root.addEventListener('touchmove', this.drag)
+    this.root.addEventListener('touchend', this.release)
   }
 
   componentWillUpdate (nextProps) {
@@ -47,11 +52,9 @@ class Kinetic extends PureComponent {
   }
 
   componentWillUnmount () {
-    const { element } = this.props
-
-    element.removeEventListener('touchstart', this.tap)
-    element.removeEventListener('touchmove', this.drag)
-    element.removeEventListener('touchend', this.release)
+    this.root.removeEventListener('touchstart', this.tap)
+    this.root.removeEventListener('touchmove', this.drag)
+    this.root.removeEventListener('touchend', this.release)
   }
 
   reset = () => {
@@ -63,8 +66,8 @@ class Kinetic extends PureComponent {
     this.ticker = null
   }
 
-  calcSize = ({ element }) => {
-    const offset = this.isDirectionVertical() ? element.offsetHeight : element.offsetWidth
+  calcSize = () => {
+    const offset = this.isDirectionVertical() ? this.root.offsetHeight : this.root.offsetWidth
 
     this.setState({ max: this.props.max || offset, min: this.props.min || 0 })
   }
@@ -80,7 +83,7 @@ class Kinetic extends PureComponent {
 
     this.offset = t
 
-    this.props.broadcast({ position: t, pressed: this.state.pressed })
+    this.setState({ position: t })
   }
 
   tap = event => {
@@ -95,7 +98,7 @@ class Kinetic extends PureComponent {
     this.reference = size
     this.amplitude = 0
     this.velocity = 0
-    this.frame = this.offset // potentially remove
+    this.frame = this.offset
 
     clearInterval(this.ticker)
 
@@ -182,9 +185,26 @@ class Kinetic extends PureComponent {
     }
   }
 
+  getRef = root => {
+    this.root = root
+
+    if (this.props.getRef) {
+      this.props.getRef(root)
+    }
+  }
+
   render () {
-    return null
+    const { style, className, onClick } = this.props
+
+    return (
+      <div
+        ref={this.getRef}
+        style={style}
+        className={className}
+        onClick={onClick}
+      >
+        {this.props.children(this.state.position)}
+      </div>
+    )
   }
 }
-
-export default Kinetic
