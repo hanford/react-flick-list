@@ -17,12 +17,22 @@ export default class ReactFlickList extends PureComponent {
     pressed: false
   }
 
+  static propTypes = {
+    direction: PropTypes.string,
+    allowTaps: PropTypes.bool,
+    allowScroll: PropTypes.bool,
+    max: PropTypes.number,
+    min: PropTypes.number,
+    getRef: PropTypes.func
+  }
+
   static defaultProps = {
     direction: 'y',
     allowTaps: true,
     allowScroll: true,
     max: 0,
-    min: 0
+    min: 0,
+    getRef: () => {}
   }
 
   componentDidMount () {
@@ -175,9 +185,24 @@ export default class ReactFlickList extends PureComponent {
     }
   }
 
+  getRef = root => {
+    this.root = root
+
+    if (this.props.getRef) {
+      this.props.getRef(root)
+    }
+  }
+
   render () {
+    const { style, className, onClick } = this.props
+
     return (
-      <div ref={root => { this.root = root }}>
+      <div
+        ref={this.getRef}
+        style={style}
+        className={className}
+        onClick={onClick}
+      >
         {this.props.children(this.state.position)}
       </div>
     )

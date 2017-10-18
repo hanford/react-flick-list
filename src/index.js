@@ -194,10 +194,14 @@ export default class ReactFlickList extends PureComponent {
   }
 
   render () {
+    const { style, className, onClick } = this.props
+
     return (
       <div
         ref={this.getRef}
-        {...this.props}
+        style={style}
+        className={className}
+        onClick={onClick}
       >
         {this.props.children(this.state.position)}
       </div>
