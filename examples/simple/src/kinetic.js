@@ -14,7 +14,8 @@ export default class ReactFlickList extends PureComponent {
   state = {
     min: 0,
     max: 0,
-    pressed: false
+    pressed: false,
+    position: 0
   }
 
   static propTypes = {
