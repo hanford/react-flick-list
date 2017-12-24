@@ -204,7 +204,7 @@ export default class ReactFlickList extends PureComponent {
         className={className}
         onClick={onClick}
       >
-        {this.props.children(this.state.position)}
+        {this.props.children(this.state)}
       </div>
     )
   }

@@ -15,14 +15,14 @@ $ npm install react-flick-list --save
 ## Usage
 
 ```js
-import Kinetic from 'react-flick-list'
+import FlickList from 'react-flick-list'
 
 ..
 
 render () {
   return (
     <FlickList>
-      {position => (
+      {({ position }) => (
         <List componentStyle={{transform: `translateY(-${position}px)`}}/>
       )}
     </FlickList>
