@@ -113,6 +113,9 @@ export default class ReactFlickList extends PureComponent {
   }
 
   drag = event => {
+    event.preventDefault()
+    event.stopPropagation()
+
     if (!this.props.allowScroll) return
 
     if (this.state.pressed) {
@@ -131,10 +134,10 @@ export default class ReactFlickList extends PureComponent {
       }
     }
 
-    if (this.props.allowTaps === false) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
+    // if (this.props.allowTaps === false) {
+    //   event.preventDefault()
+    //   event.stopPropagation()
+    // }
   }
 
   release = event => {
