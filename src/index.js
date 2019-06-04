@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import window from 'global/window'
 
 export default class ReactFlickList extends PureComponent {
-
   reference = 0
   velocity = 0
   offset = 0
@@ -19,12 +18,21 @@ export default class ReactFlickList extends PureComponent {
   }
 
   static propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     direction: PropTypes.string,
     allowTaps: PropTypes.bool,
     allowScroll: PropTypes.bool,
     max: PropTypes.number,
     min: PropTypes.number,
-    getRef: PropTypes.func
+    getRef: PropTypes.func,
+    ignoreLimits: PropTypes.bool,
+    onClick: PropTypes.func,
+    onStart: PropTypes.func,
+    onScrolling: PropTypes.func,
+    onStop: PropTypes.func,
+    stop: PropTypes.bool,
+    style: PropTypes.object
   }
 
   static defaultProps = {
@@ -33,7 +41,12 @@ export default class ReactFlickList extends PureComponent {
     allowScroll: true,
     max: 0,
     min: 0,
-    getRef: () => {}
+    ignoreLimits: false,
+    getRef: () => {},
+    onClick: () => {},
+    onStart: () => {},
+    onScrolling: () => {},
+    onStop: () => {}
   }
 
   componentDidMount () {
@@ -80,7 +93,13 @@ export default class ReactFlickList extends PureComponent {
   }
 
   scroll = pos => {
-    let t = (pos > this.state.max) ? this.state.max : (pos < this.state.min && !this.state.pressed) ? this.state.min : pos
+    let t
+
+    if (this.ignoreLimits === true) {
+      t = pos
+    } else {
+      t = (pos > this.state.max) ? this.state.max : (pos < this.state.min && !this.state.pressed) ? this.state.min : pos
+    }
 
     this.offset = t
 
@@ -132,6 +151,8 @@ export default class ReactFlickList extends PureComponent {
 
         this.scroll(r)
       }
+
+      this.props.onStart()
     }
 
     // if (this.props.allowTaps === false) {
@@ -183,9 +204,13 @@ export default class ReactFlickList extends PureComponent {
         this.scroll(this.target + this.delta)
 
         window.requestAnimationFrame(this.autoScroll)
+        this.props.onScrolling()
       } else {
         this.scroll(this.target)
+        this.props.onStop(this.target)
       }
+    } else {
+      this.props.onStop(this.target)
     }
   }
 
