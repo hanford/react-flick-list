@@ -25,13 +25,13 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "~6.24.1",
-    "babel-loader": "~6.4.1",
+    "babel-loader": "~9.1.0",
     "babel-preset-env": "~1.5.2",
     "babel-preset-react": "~6.24.1",
     "babel-preset-stage-0": "~6.24.1",
     "react": "~15.5.3",
     "react-dom": "~15.5.3",
-    "webpack": "~2.3.3"
+    "webpack": "~5.74.0"
   },
   "dependencies": {
     "global": "~4.3.1",
